@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <!-- VERY IMPORTANT FOR MOBILE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>App-1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>App-1 – Yarn & Fabric Costing</h2>
+
+<div class="grid">
+
+  <!-- WARP -->
+  <div class="col">
+    <h3>Warp</h3>
+
+    Yarn Count
+    <select id="warpCount"></select>
+
+    Ply
+    <input id="warpPly" value="1">
+
+    Width
+    <input id="warpWidth" value="53">
+
+    Reed
+    <input id="reed">
+
+    Thaan Length
+    <input id="warpLength" value="29">
+
+    Yarn Length / Pata
+    <input id="warpYarnLength" value="3100">
+
+    Waste (Pata)
+    <input id="warpWaste" value="0">
+
+    <p><b>Warp Pata:</b> <span id="warpResult">0</span></p>
+  </div>
+
+  <!-- WEFT -->
+  <div class="col">
+    <h3>Weft</h3>
+
+    Yarn Count
+    <select id="weftCount"></select>
+
+    Ply
+    <input id="weftPly" value="1">
+
+    Pick
+    <input id="pick">
+
+    Width
+    <input id="weftWidth" value="48">
+
+    Thaan Length
+    <input id="weftLength">
+
+    Yarn Length / Pata
+    <input id="weftYarnLength" value="3100">
+
+    <p><b>Weft Pata:</b> <span id="weftResult">0</span></p>
+  </div>
+
+  <!-- COSTING -->
+  <div class="col">
+    <h3>Costing</h3>
+
+    Warp Bundle Price
+    <input id="warpPrice">
+
+    Weft Bundle Price
+    <input id="weftPrice">
+
+    Dyeing Charge (₹/kg)
+    <input id="dyeCharge" value="300">
+
+    Dyeing %
+    <input id="dyePercent" value="100">
+
+    Wage
+    <input id="wage">
+
+    Wash
+    <input id="wash" value="150">
+
+    Other
+    <input id="other" value="0">
+
+    <h4>Review</h4>
+    Warp Yarn Cost: ₹ <span id="warpYarnCost">0</span><br>
+    Weft Yarn Cost: ₹ <span id="weftYarnCost">0</span><br>
+    Dyeing Cost: ₹ <span id="dyeCost">0</span><br>
+
+    <h3>Cost / Meter: ₹ <span id="costResult">0</span></h3>
+  </div>
+
+</div>
+
+<button onclick="calculate()">CALCULATE</button>
+
+<script src="app.js"></script>
+</body>
+</html>
