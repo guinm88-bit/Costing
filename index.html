@@ -2,10 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-
-  <!-- VERY IMPORTANT FOR MOBILE -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>App-1</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -19,88 +16,89 @@
   <div class="col">
     <h3>Warp</h3>
 
-    Yarn Count
+    <label>Yarn Count</label>
     <select id="warpCount"></select>
 
-    Ply
+    <label>Ply</label>
     <input id="warpPly" value="1">
 
-    Width
+    <label>Width</label>
     <input id="warpWidth" value="53">
 
-    Reed
+    <label>Reed</label>
     <input id="reed">
 
-    Thaan Length
+    <label>Thaan Length</label>
     <input id="warpLength" value="29">
 
-    Yarn Length / Pata
+    <label>Yarn Length</label>
     <input id="warpYarnLength" value="3100">
 
-    Waste (Pata)
+    <label>Waste (Pata)</label>
     <input id="warpWaste" value="0">
 
-    <p><b>Warp Pata:</b> <span id="warpResult">0</span></p>
+    <div class="result">Warp Pata: <span id="warpResult">0</span></div>
   </div>
 
   <!-- WEFT -->
   <div class="col">
     <h3>Weft</h3>
 
-    Yarn Count
+    <label>Yarn Count</label>
     <select id="weftCount"></select>
 
-    Ply
+    <label>Ply</label>
     <input id="weftPly" value="1">
 
-    Pick
+    <label>Pick</label>
     <input id="pick">
 
-    Width
-    <input id="weftWidth" value="48">
+    <label>Width</label>
+    <input id="weftWidth">
 
-    Thaan Length
+    <label>Thaan Length</label>
     <input id="weftLength">
 
-    Yarn Length / Pata
+    <label>Yarn Length</label>
     <input id="weftYarnLength" value="3100">
 
-    <p><b>Weft Pata:</b> <span id="weftResult">0</span></p>
+    <div class="result">Weft Pata: <span id="weftResult">0</span></div>
   </div>
 
-  <!-- COSTING -->
+  <!-- COSTING INPUTS -->
   <div class="col">
     <h3>Costing</h3>
 
-    Warp Bundle Price
+    <label>Warp Bundle Price</label>
     <input id="warpPrice">
 
-    Weft Bundle Price
+    <label>Weft Bundle Price</label>
     <input id="weftPrice">
 
-    Dyeing Charge (₹/kg)
+    <label>Dye Charge (₹/kg)</label>
     <input id="dyeCharge" value="300">
 
-    Dyeing %
+    <label>Dye %</label>
     <input id="dyePercent" value="100">
 
-    Wage
+    <label>Wage</label>
     <input id="wage">
 
-    Wash
+    <label>Wash</label>
     <input id="wash" value="150">
 
-    Other
+    <label>Other</label>
     <input id="other" value="0">
-
-    <h4>Review</h4>
-    Warp Yarn Cost: ₹ <span id="warpYarnCost">0</span><br>
-    Weft Yarn Cost: ₹ <span id="weftYarnCost">0</span><br>
-    Dyeing Cost: ₹ <span id="dyeCost">0</span><br>
-
-    <h3>Cost / Meter: ₹ <span id="costResult">0</span></h3>
   </div>
 
+</div>
+
+<!-- SINGLE ROW REVIEW -->
+<div class="summary-row">
+  <div>Warp ₹ <span id="warpYarnCost">0</span></div>
+  <div>Weft ₹ <span id="weftYarnCost">0</span></div>
+  <div>Dye ₹ <span id="dyeCost">0</span></div>
+  <div class="final">₹ / Mtr <span id="costResult">0</span></div>
 </div>
 
 <button onclick="calculate()">CALCULATE</button>
