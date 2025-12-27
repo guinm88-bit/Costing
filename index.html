@@ -11,66 +11,67 @@
 <h2>App-1 – Yarn & Fabric Costing</h2>
 
 <!-- TOP: WARP + WEFT -->
-<div class="grid-2">
+<div class="top-grid">
 
   <!-- WARP -->
-  <div class="col">
+  <div class="card">
     <h3>Warp</h3>
 
     <label>Yarn Count</label>
     <select id="warpCount"></select>
 
     <label>Ply</label>
-    <input id="warpPly" value="1">
+    <input id="warpPly" type="number" inputmode="numeric" value="1">
 
     <label>Width</label>
-    <input id="warpWidth" value="53">
+    <input id="warpWidth" type="number" inputmode="numeric" value="53">
 
     <label>Reed</label>
-    <input id="reed">
+    <input id="reed" type="number" inputmode="numeric">
 
     <label>Thaan Length</label>
-    <input id="warpLength" value="29">
+    <input id="warpLength" type="number" inputmode="numeric" value="29">
 
     <label>Yarn Length</label>
-    <input id="warpYarnLength" value="3100">
+    <input id="warpYarnLength" type="number" inputmode="numeric" value="3100">
 
     <label>Waste (Pata)</label>
-    <input id="warpWaste" value="0">
+    <input id="warpWaste" type="number" inputmode="numeric" value="0">
 
     <div class="result">Warp Pata: <span id="warpResult">0</span></div>
   </div>
 
   <!-- WEFT -->
-<div class="col">
-  <h3>Weft</h3>
+  <div class="card">
+    <h3>Weft</h3>
 
-  <label>Yarn Count</label>
-  <select id="weftCount"></select>
+    <label>Yarn Count</label>
+    <select id="weftCount"></select>
 
-  <label>Ply</label>
-  <input id="weftPly" value="1">
+    <label>Ply</label>
+    <input id="weftPly" type="number" inputmode="numeric" value="1">
 
-  <label>Width</label>
-  <input id="weftWidth">
+    <label>Width</label>
+    <input id="weftWidth" type="number" inputmode="numeric">
 
-  <label>Pick</label>
-  <input id="pick">
+    <label>Pick</label>
+    <input id="pick" type="number" inputmode="numeric">
 
-  <label>Thaan Length</label>
-  <input id="weftLength">
+    <label>Thaan Length</label>
+    <input id="weftLength" type="number" inputmode="numeric">
 
-  <label>Yarn Length</label>
-  <input id="weftYarnLength" value="3100">
+    <label>Yarn Length</label>
+    <input id="weftYarnLength" type="number" inputmode="numeric" value="3100">
 
-  <div class="result">Weft Pata: <span id="weftResult">0</span></div>
+    <div class="result">Weft Pata: <span id="weftResult">0</span></div>
+  </div>
+
 </div>
-
 
 <!-- CALCULATE + RESULTS -->
 <button class="calc-btn" onclick="calculate()">CALCULATE</button>
 
-<div class="summary-row">
+<div class="summary">
   <div>Warp ₹ <span id="warpYarnCost">0</span></div>
   <div>Weft ₹ <span id="weftYarnCost">0</span></div>
   <div>Dye ₹ <span id="dyeCost">0</span></div>
@@ -78,43 +79,39 @@
 </div>
 
 <!-- BOTTOM: COSTING + PRICE MASTER -->
-<div class="grid-2">
+<div class="bottom-grid">
 
   <!-- COSTING -->
-  <div class="col">
+  <div class="card">
     <h3>Costing</h3>
 
     <label>Warp Bundle Price</label>
-    <input id="warpPrice">
+    <input id="warpPrice" type="number" inputmode="numeric">
 
     <label>Weft Bundle Price</label>
-    <input id="weftPrice">
+    <input id="weftPrice" type="number" inputmode="numeric">
 
     <label>Dye Charge (₹/kg)</label>
-    <input id="dyeCharge" value="300">
+    <input id="dyeCharge" type="number" inputmode="numeric" value="300">
 
     <label>Dye %</label>
-    <input id="dyePercent" value="100">
+    <input id="dyePercent" type="number" inputmode="numeric" value="100">
 
     <label>Wage</label>
-    <input id="wage">
+    <input id="wage" type="number" inputmode="numeric">
 
     <label>Wash</label>
-    <input id="wash" value="150">
+    <input id="wash" type="number" inputmode="numeric" value="150">
 
     <label>Other</label>
-    <input id="other" value="0">
+    <input id="other" type="number" inputmode="numeric" value="0">
   </div>
 
-  <!-- PRICE MASTER -->
-  <div class="col">
-    <h3>Yarn Prices</h3>
-
+  <!-- YARN PRICES -->
+  <div class="card">
+    <h3>Yarn Prices (₹/Bundle)</h3>
     <div id="priceList"></div>
-
-    <button type="button" onclick="togglePriceEdit()" id="editPriceBtn">
-      Edit Prices
-    </button>
+    <button onclick="togglePriceEdit()" id="editPriceBtn">Edit Prices</button>
   </div>
 
 </div>

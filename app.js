@@ -20,47 +20,50 @@ yarnCounts.forEach(c => {
 });
 
 // ==================== AUTO FILLS ====================
+
+// Warp yarn count → reed, weft yarn count, pick, price
 warpCount.onchange = () => {
   const c = Number(warpCount.value);
   reed.value = reedMap[c] || "";
   weftCount.value = c;
   pick.value = reedMap[c] || "";
+  autofillYarnPrice();
 };
 
-warpPly.oninput = () => {
+// Warp ply → weft ply
+warpPly.addEventListener("input", () => {
   weftPly.value = warpPly.value;
-};
+});
 
-warpLength.oninput = () => {
-  weftLength.value = warpLength.value ? Number(warpLength.value) - 2 : "";
-};
+// Warp width → weft width (−2)
+warpWidth.addEventListener("input", () => {
+  if (warpWidth.value !== "") {
+    weftWidth.value = Number(warpWidth.value) - 2;
+  }
+});
 
-warpWidth.oninput = () => {
-  weftWidth.value = warpWidth.value ? Number(warpWidth.value) - 2 : "";
-};
-
-window.onload = () => {
-  weftLength.value = Number(warpLength.value) - 2;
-  weftWidth.value = Number(warpWidth.value) - 2;
-};
+// Warp thaan length → weft thaan length (−2)
+warpLength.addEventListener("input", () => {
+  if (warpLength.value !== "") {
+    weftLength.value = Number(warpLength.value) - 2;
+  }
+});
 
 // ==================== COSTING HELPERS (LOCKED) ====================
 function effectiveCountForCost(count) {
   const c = Number(count);
-  if (c === 84 || c === 100) return c / 2;
-  return c;
+  return (c === 84 || c === 100) ? c / 2 : c;
 }
 
 function pataPerBundle(count) {
   const c = Number(count);
-  if (c === 84 || c === 100) return 10;
-  return 5;
+  return (c === 84 || c === 100) ? 10 : 5;
 }
 
 // ==================== MAIN CALCULATION ====================
 function calculate() {
 
-  // ---------- WARP PATA (UNCHANGED) ----------
+  // ---------- WARP PATA ----------
   const warpPata =
     (Number(warpWidth.value) *
      Number(reed.value) *
@@ -71,7 +74,7 @@ function calculate() {
 
   warpResult.textContent = warpPata.toFixed(3);
 
-  // ---------- WEFT PATA (UNCHANGED) ----------
+  // ---------- WEFT PATA ----------
   const weftPata =
     (Number(weftWidth.value) *
      Number(pick.value) *
@@ -95,113 +98,73 @@ function calculate() {
   const weftYarnCost =
     weftPata * (Number(weftPrice.value) / weftEffCount / weftPataDiv);
 
-  document.getElementById("warpYarnCost").textContent =
-    warpYarnCost.toFixed(2);
+  warpYarnCost.textContent = warpYarnCost.toFixed(2);
+  weftYarnCost.textContent = weftYarnCost.toFixed(2);
 
-  document.getElementById("weftYarnCost").textContent =
-    weftYarnCost.toFixed(2);
-
-  // ---------- DYEING COST (WEIGHT BASED) ----------
+  // ---------- DYEING COST ----------
   const warpGram =
     (4600 / warpEffCount / warpPataDiv) * warpPata;
 
   const weftGram =
     (4600 / weftEffCount / weftPataDiv) * weftPata;
 
-  const dyeCost =
+  const dye =
     ((warpGram + weftGram) / 1000) *
     (Number(dyePercent.value) / 100) *
     Number(dyeCharge.value);
 
-  document.getElementById("dyeCost").textContent =
-    dyeCost.toFixed(2);
+  dyeCost.textContent = dye.toFixed(2);
 
   // ---------- FINAL COST / METER ----------
-  const total =
-    (warpYarnCost +
-     weftYarnCost +
-     dyeCost +
-     Number(wage.value || 0) +
-     Number(wash.value || 0) +
-     Number(other.value || 0)) / 12;
-
-  costResult.textContent = total.toFixed(2);
-}
-// ==================== YARN PRICE MASTER ====================
-
-// default prices (change once, then stored)
-const defaultYarnPrices = {
-  6: 0,
-  10: 0,
-  17: 0,
-  26: 0,
-  32: 0,
-  40: 0,
-  60: 0,
-  84: 0,
-  100: 0
-};
-
-let yarnPrices = {};
-let priceEditMode = false;
-
-// load prices on start
-function loadYarnPrices() {
-  const saved = localStorage.getItem("yarnPrices");
-  yarnPrices = saved ? JSON.parse(saved) : { ...defaultYarnPrices };
-  renderPriceList();
+  costResult.textContent =
+    (
+      warpYarnCost +
+      weftYarnCost +
+      dye +
+      Number(wage.value || 0) +
+      Number(wash.value || 0) +
+      Number(other.value || 0)
+    / 12).toFixed(2);
 }
 
-// render price list
-function renderPriceList() {
-  const box = document.getElementById("priceList");
-  box.innerHTML = "";
+// ==================== PRICE MASTER ====================
+const defaultPrices = {6:0,10:0,17:0,26:0,32:0,40:0,60:0,84:0,100:0};
+let yarnPrices = JSON.parse(localStorage.getItem("yarnPrices")) || {...defaultPrices};
+let editPrices = false;
 
+function renderPrices() {
+  priceList.innerHTML = "";
   yarnCounts.forEach(c => {
-    box.innerHTML += `
+    priceList.innerHTML += `
       <div class="price-row">
         <label>${c}s</label>
-        <input
-          type="number"
-          id="price_${c}"
+        <input type="number" inputmode="numeric"
           value="${yarnPrices[c]}"
-          ${priceEditMode ? "" : "readonly"}
-          oninput="updatePrice(${c}, this.value)"
-        >
-      </div>
-    `;
+          ${editPrices ? "" : "readonly"}
+          oninput="yarnPrices[${c}] = Number(this.value)||0">
+      </div>`;
   });
 }
 
-// update single price
-function updatePrice(count, val) {
-  yarnPrices[count] = Number(val) || 0;
-}
-
-// toggle edit/save
 function togglePriceEdit() {
-  priceEditMode = !priceEditMode;
-
-  document.getElementById("editPriceBtn").innerText =
-    priceEditMode ? "Save Prices" : "Edit Prices";
-
-  if (!priceEditMode) {
+  editPrices = !editPrices;
+  editPriceBtn.textContent = editPrices ? "Save Prices" : "Edit Prices";
+  if (!editPrices) {
     localStorage.setItem("yarnPrices", JSON.stringify(yarnPrices));
   }
-
-  renderPriceList();
+  renderPrices();
 }
 
-// auto-fill warp & weft prices
 function autofillYarnPrice() {
   warpPrice.value = yarnPrices[warpCount.value] || 0;
   weftPrice.value = yarnPrices[weftCount.value] || 0;
 }
 
-// hook auto-fill on count change
-warpCount.addEventListener("change", autofillYarnPrice);
-weftCount.addEventListener("change", autofillYarnPrice);
-
-// init on load
-window.addEventListener("load", loadYarnPrices);
-
+// ==================== INIT ON LOAD ====================
+window.addEventListener("load", () => {
+  // ensure defaults apply
+  weftWidth.value = Number(warpWidth.value) - 2;
+  weftLength.value = Number(warpLength.value) - 2;
+  autofillYarnPrice();
+  renderPrices();
+});

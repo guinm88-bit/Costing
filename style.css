@@ -1,8 +1,7 @@
-/* ---------- BASE ---------- */
 body {
   font-family: Arial, sans-serif;
-  padding: 10px;
   margin: 0;
+  padding: 10px;
   background: #f5f5f5;
 }
 
@@ -12,34 +11,35 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* ---------- TWO COLUMN GRID (USED EVERYWHERE) ---------- */
-.grid-2 {
+/* GRIDS */
+.top-grid,
+.bottom-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
   margin-bottom: 8px;
 }
 
-/* ---------- CARD ---------- */
-.col {
-  background: #ffffff;
+/* CARD */
+.card {
+  background: #fff;
   border: 1px solid #ccc;
   padding: 8px;
   border-radius: 6px;
 }
 
-/* ---------- HEADINGS ---------- */
+/* HEADINGS */
 h3 {
   font-size: 14px;
   margin: 0 0 6px;
   border-bottom: 1px solid #ddd;
 }
 
-/* ---------- LABELS & INPUTS ---------- */
+/* INPUTS */
 label {
   font-size: 12px;
-  display: block;
   margin-top: 4px;
+  display: block;
 }
 
 input,
@@ -51,46 +51,46 @@ select {
   box-sizing: border-box;
 }
 
-/* ---------- RESULTS ---------- */
+/* RESULTS */
 .result {
   font-size: 13px;
   font-weight: bold;
   margin-top: 4px;
 }
 
-/* ---------- CALCULATE BUTTON ---------- */
+/* BUTTON */
 .calc-btn {
   width: 100%;
   padding: 12px;
   font-size: 16px;
   font-weight: bold;
   background: #1f7ae0;
-  color: #ffffff;
+  color: #fff;
   border: none;
   border-radius: 6px;
-  margin: 6px 0;
+  margin-bottom: 6px;
 }
 
-/* ---------- SUMMARY ROW ---------- */
-.summary-row {
+/* SUMMARY */
+.summary {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
-  background: #ffffff;
+  padding: 8px;
+  background: #fff;
   border: 2px solid #1f7ae0;
   border-radius: 6px;
-  padding: 8px;
-  font-size: 13px;
   text-align: center;
+  font-size: 13px;
   margin-bottom: 8px;
 }
 
-.summary-row .final {
+.summary .final {
   font-size: 15px;
   font-weight: bold;
 }
 
-/* ---------- YARN PRICE MASTER ---------- */
+/* PRICE LIST */
 .price-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -98,47 +98,13 @@ select {
   margin-bottom: 4px;
 }
 
-.price-row label {
-  font-size: 12px;
-}
-
 .price-row input {
   text-align: right;
 }
 
-/* ---------- + / - NUMBER CONTROLS ---------- */
-.num-control {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.num-control button {
-  width: 34px;
-  height: 34px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  background: #f0f0f0;
-}
-
-.num-control input {
-  flex: 1;
-  text-align: center;
-}
-
-/* ---------- MOBILE SAFETY (DO NOT COLLAPSE GRIDS) ---------- */
+/* MOBILE SAFETY */
 @media (max-width: 420px) {
-
-  /* Keep all 2-column grids intact */
-  .grid-2 {
+  .summary {
     grid-template-columns: 1fr 1fr;
   }
-
-  /* Summary becomes 2x2 */
-  .summary-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
 }
