@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App-1</title>
+  <title>App-1 – Yarn & Fabric Costing</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
 <h2>App-1 – Yarn & Fabric Costing</h2>
 
 <!-- TOP: WARP + WEFT -->
-<div class="top-grid">
+<div class="grid-two">
 
   <!-- WARP -->
   <div class="card">
@@ -68,9 +68,10 @@
 
 </div>
 
-<!-- CALCULATE + RESULTS -->
+<!-- CALCULATE -->
 <button class="calc-btn" onclick="calculate()">CALCULATE</button>
 
+<!-- RESULTS -->
 <div class="summary">
   <div>Warp ₹ <span id="warpYarnCost">0</span></div>
   <div>Weft ₹ <span id="weftYarnCost">0</span></div>
@@ -78,8 +79,8 @@
   <div class="final">₹ / Mtr <span id="costResult">0</span></div>
 </div>
 
-<!-- BOTTOM: COSTING + PRICE MASTER -->
-<div class="bottom-grid">
+<!-- BOTTOM: COSTING + YARN PRICES -->
+<div class="grid-two">
 
   <!-- COSTING -->
   <div class="card">
