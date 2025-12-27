@@ -1,3 +1,4 @@
+/* ---------- BASE ---------- */
 body {
   font-family: Arial, sans-serif;
   padding: 10px;
@@ -11,7 +12,7 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* TWO COLUMN GRID */
+/* ---------- TWO COLUMN GRID (USED EVERYWHERE) ---------- */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -19,58 +20,63 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* CARD */
+/* ---------- CARD ---------- */
 .col {
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #ccc;
   padding: 8px;
   border-radius: 6px;
 }
 
+/* ---------- HEADINGS ---------- */
 h3 {
   font-size: 14px;
   margin: 0 0 6px;
   border-bottom: 1px solid #ddd;
 }
 
+/* ---------- LABELS & INPUTS ---------- */
 label {
   font-size: 12px;
   display: block;
   margin-top: 4px;
 }
 
-input, select {
+input,
+select {
   width: 100%;
   padding: 6px;
   font-size: 14px;
   margin-bottom: 4px;
+  box-sizing: border-box;
 }
 
+/* ---------- RESULTS ---------- */
 .result {
   font-size: 13px;
   font-weight: bold;
   margin-top: 4px;
 }
 
-/* CALCULATE */
+/* ---------- CALCULATE BUTTON ---------- */
 .calc-btn {
   width: 100%;
   padding: 12px;
   font-size: 16px;
   font-weight: bold;
   background: #1f7ae0;
-  color: #fff;
+  color: #ffffff;
   border: none;
   border-radius: 6px;
   margin: 6px 0;
 }
 
-/* SUMMARY */
+/* ---------- SUMMARY ROW ---------- */
 .summary-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
-  background: #fff;
+  background: #ffffff;
   border: 2px solid #1f7ae0;
   border-radius: 6px;
   padding: 8px;
@@ -84,7 +90,7 @@ input, select {
   font-weight: bold;
 }
 
-/* PRICE MASTER */
+/* ---------- YARN PRICE MASTER ---------- */
 .price-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -100,9 +106,39 @@ input, select {
   text-align: right;
 }
 
-/* MOBILE SAFETY */
+/* ---------- + / - NUMBER CONTROLS ---------- */
+.num-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.num-control button {
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+}
+
+.num-control input {
+  flex: 1;
+  text-align: center;
+}
+
+/* ---------- MOBILE SAFETY (DO NOT COLLAPSE GRIDS) ---------- */
 @media (max-width: 420px) {
+
+  /* Keep all 2-column grids intact */
+  .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Summary becomes 2x2 */
   .summary-row {
     grid-template-columns: 1fr 1fr;
   }
+
 }
