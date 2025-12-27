@@ -10,7 +10,8 @@
 
 <h2>App-1 – Yarn & Fabric Costing</h2>
 
-<div class="grid">
+<!-- TOP: WARP + WEFT -->
+<div class="grid-2">
 
   <!-- WARP -->
   <div class="col">
@@ -41,31 +42,45 @@
   </div>
 
   <!-- WEFT -->
-  <div class="col">
-    <h3>Weft</h3>
+<div class="col">
+  <h3>Weft</h3>
 
-    <label>Yarn Count</label>
-    <select id="weftCount"></select>
+  <label>Yarn Count</label>
+  <select id="weftCount"></select>
 
-    <label>Ply</label>
-    <input id="weftPly" value="1">
+  <label>Ply</label>
+  <input id="weftPly" value="1">
 
-    <label>Pick</label>
-    <input id="pick">
+  <label>Width</label>
+  <input id="weftWidth">
 
-    <label>Width</label>
-    <input id="weftWidth">
+  <label>Pick</label>
+  <input id="pick">
 
-    <label>Thaan Length</label>
-    <input id="weftLength">
+  <label>Thaan Length</label>
+  <input id="weftLength">
 
-    <label>Yarn Length</label>
-    <input id="weftYarnLength" value="3100">
+  <label>Yarn Length</label>
+  <input id="weftYarnLength" value="3100">
 
-    <div class="result">Weft Pata: <span id="weftResult">0</span></div>
-  </div>
+  <div class="result">Weft Pata: <span id="weftResult">0</span></div>
+</div>
 
-  <!-- COSTING INPUTS -->
+
+<!-- CALCULATE + RESULTS -->
+<button class="calc-btn" onclick="calculate()">CALCULATE</button>
+
+<div class="summary-row">
+  <div>Warp ₹ <span id="warpYarnCost">0</span></div>
+  <div>Weft ₹ <span id="weftYarnCost">0</span></div>
+  <div>Dye ₹ <span id="dyeCost">0</span></div>
+  <div class="final">₹ / Mtr <span id="costResult">0</span></div>
+</div>
+
+<!-- BOTTOM: COSTING + PRICE MASTER -->
+<div class="grid-2">
+
+  <!-- COSTING -->
   <div class="col">
     <h3>Costing</h3>
 
@@ -91,17 +106,18 @@
     <input id="other" value="0">
   </div>
 
-</div>
+  <!-- PRICE MASTER -->
+  <div class="col">
+    <h3>Yarn Prices</h3>
 
-<!-- SINGLE ROW REVIEW -->
-<div class="summary-row">
-  <div>Warp ₹ <span id="warpYarnCost">0</span></div>
-  <div>Weft ₹ <span id="weftYarnCost">0</span></div>
-  <div>Dye ₹ <span id="dyeCost">0</span></div>
-  <div class="final">₹ / Mtr <span id="costResult">0</span></div>
-</div>
+    <div id="priceList"></div>
 
-<button onclick="calculate()">CALCULATE</button>
+    <button type="button" onclick="togglePriceEdit()" id="editPriceBtn">
+      Edit Prices
+    </button>
+  </div>
+
+</div>
 
 <script src="app.js"></script>
 </body>

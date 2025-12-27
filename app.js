@@ -127,3 +127,81 @@ function calculate() {
 
   costResult.textContent = total.toFixed(2);
 }
+// ==================== YARN PRICE MASTER ====================
+
+// default prices (change once, then stored)
+const defaultYarnPrices = {
+  6: 0,
+  10: 0,
+  17: 0,
+  26: 0,
+  32: 0,
+  40: 0,
+  60: 0,
+  84: 0,
+  100: 0
+};
+
+let yarnPrices = {};
+let priceEditMode = false;
+
+// load prices on start
+function loadYarnPrices() {
+  const saved = localStorage.getItem("yarnPrices");
+  yarnPrices = saved ? JSON.parse(saved) : { ...defaultYarnPrices };
+  renderPriceList();
+}
+
+// render price list
+function renderPriceList() {
+  const box = document.getElementById("priceList");
+  box.innerHTML = "";
+
+  yarnCounts.forEach(c => {
+    box.innerHTML += `
+      <div class="price-row">
+        <label>${c}s</label>
+        <input
+          type="number"
+          id="price_${c}"
+          value="${yarnPrices[c]}"
+          ${priceEditMode ? "" : "readonly"}
+          oninput="updatePrice(${c}, this.value)"
+        >
+      </div>
+    `;
+  });
+}
+
+// update single price
+function updatePrice(count, val) {
+  yarnPrices[count] = Number(val) || 0;
+}
+
+// toggle edit/save
+function togglePriceEdit() {
+  priceEditMode = !priceEditMode;
+
+  document.getElementById("editPriceBtn").innerText =
+    priceEditMode ? "Save Prices" : "Edit Prices";
+
+  if (!priceEditMode) {
+    localStorage.setItem("yarnPrices", JSON.stringify(yarnPrices));
+  }
+
+  renderPriceList();
+}
+
+// auto-fill warp & weft prices
+function autofillYarnPrice() {
+  warpPrice.value = yarnPrices[warpCount.value] || 0;
+  weftPrice.value = yarnPrices[weftCount.value] || 0;
+}
+
+// hook auto-fill on count change
+warpCount.addEventListener("change", autofillYarnPrice);
+weftCount.addEventListener("change", autofillYarnPrice);
+
+// init on load
+window.addEventListener("load", loadYarnPrices);
+
