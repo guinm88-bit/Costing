@@ -2,16 +2,16 @@ body {
   font-family: Arial, sans-serif;
   background: #f5f5f5;
   margin: 0;
-  padding: 10px;
+  padding: 8px;
 }
 
 h2 {
   text-align: center;
-  font-size: 18px;
-  margin-bottom: 8px;
+  font-size: 17px;
+  margin: 4px 0 6px;
 }
 
-/* UNIVERSAL 2-COLUMN GRID */
+/* GRID */
 .grid-two {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -24,12 +24,18 @@ h2 {
   border: 1px solid #ccc;
   padding: 8px;
   border-radius: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
+/* TIGHT MODE */
+.tight {
+  margin-bottom: 4px;
+}
+
+/* HEADINGS */
 h3 {
-  font-size: 14px;
-  margin: 0 0 6px;
+  font-size: 13px;
+  margin: 0 0 4px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -37,17 +43,16 @@ h3 {
 label {
   font-size: 12px;
   display: block;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 input, select {
   width: 100%;
-  padding: 6px;
-  font-size: 16px;   /* 🔒 CRITICAL: prevents mobile zoom */
-  margin-bottom: 4px;
+  padding: 5px;
+  font-size: 16px; /* prevents mobile zoom */
+  margin-bottom: 2px;
   box-sizing: border-box;
 }
-
 
 /* RESULTS */
 .result {
@@ -59,14 +64,13 @@ input, select {
 /* BUTTON */
 .calc-btn {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 15px;
   font-weight: bold;
   background: #1f7ae0;
   color: #fff;
   border: none;
   border-radius: 6px;
-  margin: 6px 0;
 }
 
 /* SUMMARY */
@@ -74,13 +78,12 @@ input, select {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
-  padding: 8px;
+  padding: 6px;
   background: #fff;
   border: 2px solid #1f7ae0;
   border-radius: 6px;
   font-size: 13px;
   text-align: center;
-  margin-bottom: 10px;
 }
 
 .summary .final {
@@ -88,23 +91,13 @@ input, select {
   font-weight: bold;
 }
 
-/* PRICE LIST */
-/* YARN PRICE ITEM */
+/* PRICE ITEMS */
 .price-row {
   display: flex;
   flex-direction: column;
 }
 
-.price-row label {
-  font-size: 12px;
-}
-
-.price-row input {
-  font-size: 16px;
-  text-align: right;
-}
-
-/* MOBILE SAFETY */
+/* MOBILE */
 @media (max-width: 480px) {
   .summary {
     grid-template-columns: 1fr 1fr;
