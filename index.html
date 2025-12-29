@@ -78,7 +78,7 @@
 
 </div>
 
-<!-- BLACK GROUP : DYE / WAGE / OTHER -->
+<!-- BLACK GROUP -->
 <div class="card tight">
   <div class="black-group">
     <div class="grid-two">
@@ -113,10 +113,9 @@
   <div class="final">₹ / Mtr <span id="costResult">0</span></div>
 </div>
 
-<!-- CALCULATE -->
 <button class="calc-btn tight" onclick="calculate()">CALCULATE</button>
 
-<!-- BUNDLE PRICES BELOW CALCULATE -->
+<!-- BUNDLE PRICES -->
 <div class="card tight">
   <div class="grid-two">
     <div>
@@ -130,11 +129,17 @@
   </div>
 </div>
 
-<!-- YARN PRICES -->
+<!-- YARN PRICES (HIDDEN INITIALLY) -->
 <div class="card tight">
   <h3>Yarn Prices (₹ / Bundle)</h3>
-  <div id="priceList" class="grid-two"></div>
-  <button onclick="togglePriceEdit()" id="editPriceBtn">Set / Edit Prices</button>
+
+  <div id="priceWrapper" class="hidden">
+    <div id="priceList" class="grid-two"></div>
+  </div>
+
+  <button onclick="togglePriceEdit()" id="editPriceBtn">
+    Set / Edit Prices
+  </button>
 </div>
 
 <script src="app.js"></script>

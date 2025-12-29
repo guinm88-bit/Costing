@@ -11,14 +11,12 @@ h2 {
   margin: 4px 0 6px;
 }
 
-/* GRID */
 .grid-two {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
-/* CARD */
 .card {
   background: #fff;
   border: 1px solid #ccc;
@@ -27,19 +25,16 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* TIGHT SPACING */
 .tight {
   margin-bottom: 4px;
 }
 
-/* HEADINGS */
 h3 {
   font-size: 13px;
   margin: 0 0 4px;
   border-bottom: 1px solid #ddd;
 }
 
-/* INPUTS */
 label {
   font-size: 12px;
   display: block;
@@ -49,19 +44,17 @@ label {
 input, select {
   width: 100%;
   padding: 5px;
-  font-size: 16px; /* prevents mobile zoom */
+  font-size: 16px;
   margin-bottom: 2px;
   box-sizing: border-box;
 }
 
-/* RESULTS */
 .result {
   font-size: 13px;
   font-weight: bold;
   margin-top: 4px;
 }
 
-/* BUTTON */
 .calc-btn {
   width: 100%;
   padding: 10px;
@@ -73,7 +66,6 @@ input, select {
   border-radius: 6px;
 }
 
-/* SUMMARY */
 .summary {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -91,27 +83,27 @@ input, select {
   font-weight: bold;
 }
 
-/* GREEN GROUP – WARP & WEFT */
 .green-group {
   border: 2px solid #2e7d32;
   border-radius: 14px;
   padding: 6px;
 }
 
-/* BLACK GROUP – DYE / WAGE */
 .black-group {
   border: 2px solid #000;
   border-radius: 14px;
   padding: 6px;
 }
 
-/* PRICE ITEMS */
 .price-row {
   display: flex;
   flex-direction: column;
 }
 
-/* MOBILE */
+.hidden {
+  display: none;
+}
+
 @media (max-width: 480px) {
   .summary {
     grid-template-columns: 1fr 1fr;
