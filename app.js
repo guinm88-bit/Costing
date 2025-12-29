@@ -1,7 +1,8 @@
 // ==================== YARN COUNTS ====================
 const yarnCounts = [
   "6s","10s","17s","26s","32s","40s","60s","84s","100s",
-  "2/80s","2/60s","2/40s","2/17s"
+  "2/17s","2/40s","2/60s","2/80s",
+  "33s","56K","100K"
 ];
 
 // ==================== REED / PICK MAP ====================
@@ -16,11 +17,16 @@ const reedPickMap = {
   "84s": 84,
   "100s": 96,
 
-  // DOUBLE COUNTS (AS YOU SPECIFIED)
-  "2/80s": 64,
-  "2/60s": 52,
+  // DOUBLE YARNS
+  "2/17s": 32,
   "2/40s": 48,
-  "2/17s": 32
+  "2/60s": 52,
+  "2/80s": 64,
+
+  // SPECIAL COUNTS
+  "33s": 48,
+  "56K": 56,
+  "100K": 72
 };
 
 // ==================== INIT DROPDOWNS ====================
@@ -31,44 +37,52 @@ yarnCounts.forEach(c => {
 
 // ==================== HELPERS ====================
 function baseCount(label) {
+  if (label === "100K") return 50;
+  if (label === "56K") return 28;
+  if (label === "33s") return 16.5;
   return Number(label.replace("2/","").replace("s",""));
 }
 
 // ==================== AUTO FILLS ====================
 warpCount.onchange = () => {
   const label = warpCount.value;
-
-  // Reed & Pick autofill
   reed.value = reedPickMap[label] || "";
   pick.value = reedPickMap[label] || "";
-
-  // Sync weft count
   weftCount.value = label;
-
   autofillPrices();
 };
 
-warpPly.oninput = () => {
-  weftPly.value = warpPly.value;
+weftCount.onchange = () => {
+  autofillPrices();
 };
 
-warpWidth.oninput = () => {
-  weftWidth.value = Number(warpWidth.value) - 2;
-};
+warpPly.oninput = () => weftPly.value = warpPly.value;
+warpWidth.oninput = () => weftWidth.value = Number(warpWidth.value) - 2;
+warpLength.oninput = () => weftLength.value = Number(warpLength.value) - 2;
 
-warpLength.oninput = () => {
-  weftLength.value = Number(warpLength.value) - 2;
+// ==================== COLOUR / WHITE LOGIC (NEW) ====================
+fabricColour.onchange = () => {
+  if (fabricColour.value === "white") {
+    dyePercent.value = 0;
+    dyeCharge.value = 0;
+  } else {
+    dyePercent.value = 100;
+    dyeCharge.value = 300;
+  }
 };
 
 // ==================== COSTING HELPERS (LOCKED) ====================
 function effectiveCount(label) {
+  if (label.startsWith("2/")) return baseCount(label) / 2;
   const c = baseCount(label);
-  return (c === 84 || c === 100) ? c / 2 : c;
+  if (c === 84 || c === 100) return c / 2;
+  return c;
 }
 
 function pataPerBundle(label) {
   const c = baseCount(label);
-  return (c === 84 || c === 100) ? 10 : 5;
+  if (c === 84 || c === 100) return 10;
+  return 5;
 }
 
 // ==================== MAIN CALCULATION ====================

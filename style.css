@@ -89,8 +89,19 @@ input, select {
 }
 
 /* PRICE LIST */
+/* YARN PRICE ITEM */
 .price-row {
-  display: contents;
+  display: flex;
+  flex-direction: column;
+}
+
+.price-row label {
+  font-size: 12px;
+}
+
+.price-row input {
+  font-size: 16px;
+  text-align: right;
 }
 
 /* MOBILE SAFETY */
