@@ -43,10 +43,11 @@ label {
 input, select {
   width: 100%;
   padding: 6px;
-  font-size: 14px;
+  font-size: 16px;   /* 🔒 CRITICAL: prevents mobile zoom */
   margin-bottom: 4px;
   box-sizing: border-box;
 }
+
 
 /* RESULTS */
 .result {
