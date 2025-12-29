@@ -27,7 +27,7 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* TIGHT MODE */
+/* TIGHT SPACING */
 .tight {
   margin-bottom: 4px;
 }
@@ -89,6 +89,20 @@ input, select {
 .summary .final {
   font-size: 15px;
   font-weight: bold;
+}
+
+/* GREEN GROUP – WARP & WEFT */
+.green-group {
+  border: 2px solid #2e7d32;
+  border-radius: 14px;
+  padding: 6px;
+}
+
+/* BLACK GROUP – DYE / WAGE */
+.black-group {
+  border: 2px solid #000;
+  border-radius: 14px;
+  padding: 6px;
 }
 
 /* PRICE ITEMS */

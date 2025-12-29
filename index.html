@@ -17,67 +17,95 @@
   <div class="card">
     <h3>Warp</h3>
 
-    <label>Yarn Count</label>
-    <select id="warpCount"></select>
+    <div class="green-group">
+      <label>Yarn Count</label>
+      <select id="warpCount"></select>
 
-    <label>Ply</label>
-    <input id="warpPly" type="number" inputmode="numeric" value="1">
+      <label>Ply</label>
+      <input id="warpPly" type="number" inputmode="numeric" value="1">
 
-    <label>Width</label>
-    <input id="warpWidth" type="number" inputmode="numeric" value="53">
+      <label>Width</label>
+      <input id="warpWidth" type="number" inputmode="numeric" value="53">
 
-    <label>Reed</label>
-    <input id="reed" type="number" inputmode="numeric">
+      <label>Reed</label>
+      <input id="reed" type="number" inputmode="numeric">
 
-    <label>Thaan Length</label>
-    <input id="warpLength" type="number" inputmode="numeric" value="29">
+      <label>Thaan Length</label>
+      <input id="warpLength" type="number" inputmode="numeric" value="29">
 
-    <label>Yarn Length</label>
-    <input id="warpYarnLength" type="number" inputmode="numeric" value="3100">
+      <label>Yarn Length</label>
+      <input id="warpYarnLength" type="number" inputmode="numeric" value="3100">
 
-    <label>Waste (Pata)</label>
-    <input id="warpWaste" type="number" inputmode="numeric" value="0">
+      <label>Waste (Pata)</label>
+      <input id="warpWaste" type="number" inputmode="numeric" value="0">
 
-    <div class="result">Warp Pata: <span id="warpResult">0</span></div>
+      <div class="result">Warp Pata: <span id="warpResult">0</span></div>
+    </div>
   </div>
 
   <!-- WEFT -->
   <div class="card">
     <h3>Weft</h3>
 
-    <label>Yarn Count</label>
-    <select id="weftCount"></select>
+    <div class="green-group">
+      <label>Yarn Count</label>
+      <select id="weftCount"></select>
 
-    <label>Ply</label>
-    <input id="weftPly" type="number" inputmode="numeric" value="1">
+      <label>Ply</label>
+      <input id="weftPly" type="number" inputmode="numeric" value="1">
 
-    <label>Width</label>
-    <input id="weftWidth" type="number" inputmode="numeric">
+      <label>Width</label>
+      <input id="weftWidth" type="number" inputmode="numeric">
 
-    <label>Pick</label>
-    <input id="pick" type="number" inputmode="numeric">
+      <label>Pick</label>
+      <input id="pick" type="number" inputmode="numeric">
 
-    <label>Thaan Length</label>
-    <input id="weftLength" type="number" inputmode="numeric">
+      <label>Thaan Length</label>
+      <input id="weftLength" type="number" inputmode="numeric">
 
-    <label>Yarn Length</label>
-    <input id="weftYarnLength" type="number" inputmode="numeric" value="3100">
+      <label>Yarn Length</label>
+      <input id="weftYarnLength" type="number" inputmode="numeric" value="3100">
 
-    <label>Colour / White</label>
-    <select id="fabricColour">
-      <option value="colour" selected>Colour</option>
-      <option value="white">White</option>
-    </select>
+      <label>Colour / White</label>
+      <select id="fabricColour">
+        <option value="colour" selected>Colour</option>
+        <option value="white">White</option>
+      </select>
 
-    <div class="result">Weft Pata: <span id="weftResult">0</span></div>
+      <div class="result">Weft Pata: <span id="weftResult">0</span></div>
+    </div>
   </div>
 
 </div>
 
-<!-- CALCULATE -->
-<button class="calc-btn tight" onclick="calculate()">CALCULATE</button>
+<!-- BLACK GROUP : DYE / WAGE / OTHER -->
+<div class="card tight">
+  <div class="black-group">
+    <div class="grid-two">
+      <div>
+        <label>Dye charge / kg</label>
+        <input id="dyeCharge" type="number" inputmode="numeric" value="300">
+      </div>
+      <div>
+        <label>Dye %</label>
+        <input id="dyePercent" type="number" inputmode="numeric" value="100">
+      </div>
+    </div>
 
-<!-- RESULTS -->
+    <div class="grid-two">
+      <div>
+        <label>Wage</label>
+        <input id="wage" type="number" inputmode="numeric">
+      </div>
+      <div>
+        <label>Other</label>
+        <input id="other" type="number" inputmode="numeric" value="0">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS ABOVE CALCULATE -->
 <div class="summary tight">
   <div>Warp ₹ <span id="warpYarnCost">0</span></div>
   <div>Weft ₹ <span id="weftYarnCost">0</span></div>
@@ -85,37 +113,21 @@
   <div class="final">₹ / Mtr <span id="costResult">0</span></div>
 </div>
 
-<!-- COSTING (MOVED UP & COMPACT) -->
+<!-- CALCULATE -->
+<button class="calc-btn tight" onclick="calculate()">CALCULATE</button>
+
+<!-- BUNDLE PRICES BELOW CALCULATE -->
 <div class="card tight">
-  <h3>Costing</h3>
-
-  <!-- Row 1 -->
   <div class="grid-two">
     <div>
-      <label>Dye charge / kg</label>
-      <input id="dyeCharge" type="number" inputmode="numeric" value="300">
+      <label>Warp Bundle Price</label>
+      <input id="warpPrice" type="number" inputmode="numeric">
     </div>
     <div>
-      <label>Dye %</label>
-      <input id="dyePercent" type="number" inputmode="numeric" value="100">
+      <label>Weft Bundle Price</label>
+      <input id="weftPrice" type="number" inputmode="numeric">
     </div>
   </div>
-
-  <!-- Row 2 -->
-  <div class="grid-two">
-    <div>
-      <label>Wage</label>
-      <input id="wage" type="number" inputmode="numeric">
-    </div>
-    <div>
-      <label>Wash</label>
-      <input id="wash" type="number" inputmode="numeric" value="150">
-    </div>
-  </div>
-
-  <!-- Row 3 -->
-  <label>Other</label>
-  <input id="other" type="number" inputmode="numeric" value="0">
 </div>
 
 <!-- YARN PRICES -->
