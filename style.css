@@ -11,12 +11,11 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* FORCE 2 COLUMNS ALWAYS */
+/* UNIVERSAL 2-COLUMN GRID */
 .grid-two {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 8px;
 }
 
 /* CARD */
@@ -25,6 +24,7 @@ h2 {
   border: 1px solid #ccc;
   padding: 8px;
   border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 h3 {
@@ -33,6 +33,7 @@ h3 {
   border-bottom: 1px solid #ddd;
 }
 
+/* INPUTS */
 label {
   font-size: 12px;
   display: block;
@@ -47,6 +48,7 @@ input, select {
   box-sizing: border-box;
 }
 
+/* RESULTS */
 .result {
   font-size: 13px;
   font-weight: bold;
@@ -63,7 +65,7 @@ input, select {
   color: #fff;
   border: none;
   border-radius: 6px;
-  margin-bottom: 6px;
+  margin: 6px 0;
 }
 
 /* SUMMARY */
@@ -87,17 +89,10 @@ input, select {
 
 /* PRICE LIST */
 .price-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
-  margin-bottom: 4px;
+  display: contents;
 }
 
-.price-row input {
-  text-align: right;
-}
-
-/* MOBILE: STILL 2 COLUMNS */
+/* MOBILE SAFETY */
 @media (max-width: 480px) {
   .summary {
     grid-template-columns: 1fr 1fr;

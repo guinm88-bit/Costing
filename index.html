@@ -79,42 +79,47 @@
   <div class="final">₹ / Mtr <span id="costResult">0</span></div>
 </div>
 
-<!-- BOTTOM: COSTING + YARN PRICES -->
-<div class="grid-two">
+<!-- COSTING (2 COLUMNS INSIDE) -->
+<div class="card">
+  <h3>Costing</h3>
 
-  <!-- COSTING -->
-  <div class="card">
-    <h3>Costing</h3>
+  <div class="grid-two">
+    <div>
+      <label>Warp Bundle Price</label>
+      <input id="warpPrice" type="number" inputmode="numeric">
 
-    <label>Warp Bundle Price</label>
-    <input id="warpPrice" type="number" inputmode="numeric">
+      <label>Dye Charge (₹/kg)</label>
+      <input id="dyeCharge" type="number" inputmode="numeric" value="300">
 
-    <label>Weft Bundle Price</label>
-    <input id="weftPrice" type="number" inputmode="numeric">
+      <label>Wage</label>
+      <input id="wage" type="number" inputmode="numeric">
+    </div>
 
-    <label>Dye Charge (₹/kg)</label>
-    <input id="dyeCharge" type="number" inputmode="numeric" value="300">
+    <div>
+      <label>Weft Bundle Price</label>
+      <input id="weftPrice" type="number" inputmode="numeric">
 
-    <label>Dye %</label>
-    <input id="dyePercent" type="number" inputmode="numeric" value="100">
+      <label>Dye %</label>
+      <input id="dyePercent" type="number" inputmode="numeric" value="100">
 
-    <label>Wage</label>
-    <input id="wage" type="number" inputmode="numeric">
-
-    <label>Wash</label>
-    <input id="wash" type="number" inputmode="numeric" value="150">
-
-    <label>Other</label>
-    <input id="other" type="number" inputmode="numeric" value="0">
+      <label>Wash</label>
+      <input id="wash" type="number" inputmode="numeric" value="150">
+    </div>
   </div>
 
-  <!-- YARN PRICES -->
-  <div class="card">
-    <h3>Yarn Prices (₹/Bundle)</h3>
-    <div id="priceList"></div>
-    <button onclick="togglePriceEdit()" id="editPriceBtn">Edit Prices</button>
-  </div>
+  <label>Other</label>
+  <input id="other" type="number" inputmode="numeric" value="0">
+</div>
 
+<!-- YARN PRICES (2 COLUMNS INSIDE) -->
+<div class="card">
+  <h3>Yarn Prices (₹ / Bundle)</h3>
+
+  <div id="priceList" class="grid-two"></div>
+
+  <button onclick="togglePriceEdit()" id="editPriceBtn">
+    Set / Edit Prices
+  </button>
 </div>
 
 <script src="app.js"></script>
